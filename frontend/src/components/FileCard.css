@@ -1,0 +1,311 @@
+.file-card {
+  position: relative;
+  display: flex;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 120px;
+}
+
+.file-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.file-card.card-status-converting {
+  border-color: var(--primary);
+}
+
+.file-card.card-status-completed {
+  border-color: var(--success);
+}
+
+.file-card.card-status-failed {
+  border-color: var(--error);
+}
+
+/* Previews */
+.file-card-preview-image,
+.file-card-preview-video,
+.file-card-preview-fallback {
+  width: 140px;
+  min-width: 140px;
+  height: 100%;
+  background-color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  border-right: 1px solid var(--border);
+}
+
+.file-card-preview-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.file-card:hover .file-card-preview-image img {
+  transform: scale(1.05);
+}
+
+.file-card-preview-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.file-card-preview-fallback {
+  color: var(--text-muted);
+}
+
+/* Card details body */
+.file-card-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 16px;
+  min-width: 0; /* Ensures text-overflow ellipsis works inside flex items */
+}
+
+.file-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.file-card-title-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.4;
+}
+
+.file-card-name {
+  font-size: 0.95rem;
+  font-weight: 750;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-card-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.file-card-remove-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.file-card-remove-btn:hover {
+  color: var(--error);
+  background-color: var(--error-light);
+}
+
+/* Error text */
+.file-card-error {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--error);
+  margin-bottom: 8px;
+}
+
+/* Footer & Dropdown actions */
+.file-card-footer {
+  margin-top: auto;
+}
+
+.file-card-selector-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.convert-to-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.dropdown-wrapper-inline {
+  width: 180px;
+}
+
+/* Result Actions styling */
+.file-card-result-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.result-size-info {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.savings-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--success);
+  background-color: var(--success-light);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+}
+
+.btn-download-card {
+  background-color: var(--success);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-download-card:hover {
+  background-color: #059669; /* Emerald 600 */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+}
+
+/* Overlays (Converting, Completed, Failed) */
+.status-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  z-index: 10;
+  backdrop-filter: blur(2px);
+  animation: fadeIn 0.2s ease forwards;
+}
+
+html.dark .status-overlay {
+  background-color: rgba(19, 28, 46, 0.9);
+}
+
+.status-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Spinner & Progress Ring */
+.progress-ring-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+}
+
+.spinner {
+  width: 100%;
+  height: 100%;
+  border: 4px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.progress-text {
+  position: absolute;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* Animations */
+.success-icon {
+  color: var(--success);
+}
+
+.error-icon {
+  color: var(--error);
+}
+
+@keyframes bounceIn {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@media (max-width: 600px) {
+  .file-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .file-card-preview-image,
+  .file-card-preview-video,
+  .file-card-preview-fallback {
+    width: 100%;
+    height: 140px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .file-card-result-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .btn-download-card {
+    width: 100%;
+  }
+}

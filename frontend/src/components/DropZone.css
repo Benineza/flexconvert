@@ -1,0 +1,131 @@
+.dropzone-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.dropzone-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.dropzone-card:hover {
+  border-color: var(--primary);
+  background-color: var(--surface-hover);
+}
+
+.dropzone-card:focus-visible {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+.dropzone-card.drag-active {
+  border-color: var(--primary);
+  background-color: var(--primary-light);
+  transform: scale(1.02);
+}
+
+.dropzone-card.has-error {
+  border-color: var(--error);
+}
+
+.dropzone-file-input {
+  display: none;
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.dropzone-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--background);
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.dropzone-card:hover .dropzone-icon-wrapper {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  transform: translateY(-4px);
+}
+
+.dropzone-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.browse-link {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.dropzone-subtext {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+/* Error banner */
+.dropzone-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background-color: var(--error-light);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--error);
+  font-weight: 550;
+  font-size: 0.9rem;
+}
+
+.error-banner-icon {
+  flex-shrink: 0;
+}
+
+.error-banner-text {
+  flex-grow: 1;
+}
+
+.error-banner-close {
+  background: none;
+  border: none;
+  color: var(--error);
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+@media (max-width: 600px) {
+  .dropzone-card {
+    padding: 32px 16px;
+  }
+  
+  .dropzone-card h3 {
+    font-size: 1.2rem;
+  }
+}
