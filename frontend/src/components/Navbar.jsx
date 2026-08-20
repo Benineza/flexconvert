@@ -72,6 +72,13 @@ export default function Navbar() {
                   <small>Convert MP4, MOV, WebM, MKV, AVI</small>
                 </div>
               </NavLink>
+              <NavLink to="/pdf-converter" className="dropdown-item">
+                <span className="dropdown-emoji">📄</span>
+                <div className="dropdown-info">
+                  <strong>PDF Converter</strong>
+                  <small>Convert PDF to Images or Images to PDF</small>
+                </div>
+              </NavLink>
             </div>
           </div>
 
@@ -94,6 +101,13 @@ export default function Navbar() {
                 <div className="dropdown-info">
                   <strong>Image Resizer</strong>
                   <small>Change width & height (Coming Soon)</small>
+                </div>
+              </div>
+              <div className="dropdown-item disabled">
+                <span className="dropdown-emoji">🛠️</span>
+                <div className="dropdown-info">
+                  <strong>PDF Tools</strong>
+                  <small>Merge, Split, Rotate (Coming Soon)</small>
                 </div>
               </div>
             </div>
@@ -153,12 +167,16 @@ export default function Navbar() {
             <NavLink to="/video-converter" className="mobile-nav-link" onClick={toggleMobileMenu}>
               🎬 Video Converter
             </NavLink>
+            <NavLink to="/pdf-converter" className="mobile-nav-link" onClick={toggleMobileMenu}>
+              📄 PDF Converter
+            </NavLink>
           </div>
 
           <div className="mobile-nav-section">
             <span className="mobile-nav-title">Other Tools</span>
             <div className="mobile-nav-link disabled">📦 Compressor (Soon)</div>
             <div className="mobile-nav-link disabled">📐 Image Resizer (Soon)</div>
+            <div className="mobile-nav-link disabled">🛠️ PDF Tools (Soon)</div>
           </div>
 
           <div className="mobile-nav-section">

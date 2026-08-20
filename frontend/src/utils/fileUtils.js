@@ -1,4 +1,4 @@
-import { FORMATS } from '../constants/formats';
+import { getFormatDetails } from '../constants/formats';
 
 /**
  * Format bytes to a human readable string.
@@ -25,15 +25,7 @@ export function getFileExtension(filename) {
  * Get format details (ext, category, label) by file extension or name.
  */
 export function getFormatInfo(filenameOrExt) {
-  const ext = filenameOrExt.includes('.') ? getFileExtension(filenameOrExt) : filenameOrExt.toLowerCase();
-  
-  for (const cat of ['image', 'video']) {
-    const item = FORMATS[cat].find(f => f.ext === ext);
-    if (item) {
-      return { ...item, category: cat };
-    }
-  }
-  return null;
+  return getFormatDetails(filenameOrExt);
 }
 
 /**

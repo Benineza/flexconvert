@@ -12,18 +12,30 @@ export default function Home() {
 
   // Queue state management
   const handleAddFiles = (newFiles) => {
-    const newItems = newFiles.map(file => ({
-      id: Math.random().toString(36).substring(2, 11),
-      file,
-      previewUrl: file.type.startsWith('image/') || file.type.startsWith('video/')
-        ? URL.createObjectURL(file)
-        : null,
-      targetFormat: '',
-      status: 'idle',
-      progress: 0,
-      result: null,
-      error: null
-    }));
+    const newItems = newFiles.map(file => {
+      const ext = file.name.split('.').pop().toLowerCase();
+      const isPdf = ext === 'pdf';
+      return {
+        id: Math.random().toString(36).substring(2, 11),
+        file,
+        previewUrl: file.type.startsWith('image/') || file.type.startsWith('video/')
+          ? URL.createObjectURL(file)
+          : null,
+        targetFormat: '',
+        status: 'idle',
+        progress: 0,
+        result: null,
+        error: null,
+        pdfSettings: isPdf ? {
+          pageSelection: 'all',
+          pageStart: 1,
+          pageEnd: 5,
+          totalPages: 5, // Mock page count
+          quality: 90,
+          dpi: 150
+        } : null
+      };
+    });
 
     setQueue(prev => [...prev, ...newItems]);
   };
@@ -137,6 +149,14 @@ export default function Home() {
               <h3>Videos</h3>
               <div className="format-badges">
                 {FORMATS.video.map(f => (
+                  <span key={f.id} className="format-pill">{f.label}</span>
+                ))}
+              </div>
+            </div>
+            <div className="format-type-card">
+              <h3>Documents</h3>
+              <div className="format-badges">
+                {FORMATS.document.map(f => (
                   <span key={f.id} className="format-pill">{f.label}</span>
                 ))}
               </div>

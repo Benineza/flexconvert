@@ -82,6 +82,32 @@
   color: var(--text-muted);
 }
 
+/* PDF branding Icon in preview card */
+.pdf-thumbnail-icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--error-light) !important;
+  color: var(--error) !important;
+}
+
+.pdf-brand-icon {
+  color: var(--error);
+  filter: drop-shadow(0 2px 6px rgba(239, 68, 68, 0.15));
+}
+
+.pdf-badge-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--error);
+  background-color: rgba(239, 68, 68, 0.15);
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
 /* Card details body */
 .file-card-details {
   display: flex;
@@ -89,7 +115,8 @@
   justify-content: space-between;
   flex-grow: 1;
   padding: 16px;
-  min-width: 0; /* Ensures text-overflow ellipsis works inside flex items */
+  min-width: 0;
+  gap: 12px;
 }
 
 .file-card-header {
@@ -97,7 +124,6 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 8px;
 }
 
 .file-card-title-group {
@@ -105,6 +131,7 @@
   flex-direction: column;
   min-width: 0;
   line-height: 1.4;
+  text-align: left;
 }
 
 .file-card-name {
@@ -119,6 +146,28 @@
 .file-card-meta {
   font-size: 0.8rem;
   color: var(--text-muted);
+}
+
+.card-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.preview-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px !important;
+  font-size: 0.8rem !important;
+  border-radius: var(--radius-sm);
+}
+
+.preview-toggle-btn.active {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
 }
 
 .file-card-remove-btn {
@@ -144,7 +193,6 @@
   gap: 6px;
   font-size: 0.8rem;
   color: var(--error);
-  margin-bottom: 8px;
 }
 
 /* Footer & Dropdown actions */
@@ -181,6 +229,7 @@
 .result-size-info {
   font-size: 0.8rem;
   color: var(--text-secondary);
+  text-align: left;
 }
 
 .savings-tag {
@@ -200,12 +249,12 @@
 }
 
 .btn-download-card:hover {
-  background-color: #059669; /* Emerald 600 */
+  background-color: #059669;
   transform: translateY(-1px);
   box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
 }
 
-/* Overlays (Converting, Completed, Failed) */
+/* Overlays */
 .status-overlay {
   position: absolute;
   inset: 0;
@@ -230,7 +279,6 @@ html.dark .status-overlay {
   color: var(--text-primary);
 }
 
-/* Spinner & Progress Ring */
 .progress-ring-wrapper {
   position: relative;
   display: flex;
@@ -265,23 +313,17 @@ html.dark .status-overlay {
   color: var(--error);
 }
 
-@keyframes bounceIn {
-  from {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  50% {
-    opacity: 0.9;
-    transform: scale(1.1);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* Preview Drawer Wrapper styling */
+.file-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
 }
 
-.animate-bounce-in {
-  animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+.file-card-preview-drawer {
+  padding: 0;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @media (max-width: 600px) {

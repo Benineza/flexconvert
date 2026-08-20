@@ -51,7 +51,8 @@ export default function ConversionQueue({ queue, onRemove, onUpdateItem, onClear
         formatToUse, 
         (percent) => {
           onUpdateItem(item.id, { progress: percent });
-        }
+        },
+        item.pdfSettings || {}
       );
       
       onUpdateItem(item.id, { 
@@ -90,7 +91,13 @@ export default function ConversionQueue({ queue, onRemove, onUpdateItem, onClear
   // Triggers browser download for a single converted file
   const handleDownloadItem = (item) => {
     if (item.status === 'completed' && item.result) {
-      downloadFile(item.result.blob, item.result.filename);
+      if (item.result.isMultiFile && item.result.files) {
+        item.result.files.forEach(f => {
+          downloadFile(f.blob, f.filename);
+        });
+      } else {
+        downloadFile(item.result.blob, item.result.filename);
+      }
     }
   };
 

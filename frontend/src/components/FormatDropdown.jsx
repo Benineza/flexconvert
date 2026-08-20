@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Search, ChevronDown, Check } from 'lucide-react';
-import { FORMATS } from '../constants/formats';
+import { FORMATS, getAvailableOutputs } from '../constants/formats';
 import './FormatDropdown.css';
 
 export default function FormatDropdown({ selectedFormat, onSelectFormat, fileCategory, excludeFormat }) {
@@ -19,16 +19,30 @@ export default function FormatDropdown({ selectedFormat, onSelectFormat, fileCat
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Filter formats based on category and search query
+  // Filter formats based on category, rules, and search query
   const getFilteredFormats = () => {
     const list = [];
-    const categoriesToInclude = fileCategory === 'all' ? ['image', 'video'] : [fileCategory];
+    const categories = ['image', 'video', 'document'];
+    
+    // Resolve allowed output extensions if excludeFormat is present
+    const allowedExtensions = excludeFormat 
+      ? getAvailableOutputs(excludeFormat)
+      : null;
 
-    categoriesToInclude.forEach(cat => {
+    categories.forEach(cat => {
+      // Optional category level filter (e.g. only images or only videos)
+      if (fileCategory && fileCategory !== 'all' && fileCategory !== cat) {
+        return;
+      }
+
       const items = FORMATS[cat] || [];
       const filtered = items.filter(f => {
-        // Exclude current extension
+        // Exclude current extension if it's set
         if (excludeFormat && f.ext === excludeFormat.toLowerCase()) {
+          return false;
+        }
+        // Match against allowed targets if filters exist
+        if (allowedExtensions && !allowedExtensions.includes(f.ext)) {
           return false;
         }
         // Match search query
@@ -38,7 +52,7 @@ export default function FormatDropdown({ selectedFormat, onSelectFormat, fileCat
 
       if (filtered.length > 0) {
         list.push({
-          category: cat.toUpperCase(),
+          category: cat === 'document' ? 'DOCUMENT' : cat.toUpperCase(),
           formats: filtered
         });
       }

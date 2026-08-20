@@ -1,0 +1,45 @@
+.pdf-page-view {
+  background-color: var(--background);
+}
+
+.pdf-icon-accent-box {
+  background-color: var(--error-light) !important;
+  color: var(--error) !important;
+}
+
+.pdf-queue-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.pdf-global-settings-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s;
+}
+
+.pdf-global-settings-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.quick-nav-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pdf-features-list {
+  background-color: var(--surface);
+}
+
+@media (max-width: 768px) {
+  .quick-nav-links {
+    justify-content: center;
+  }
+}

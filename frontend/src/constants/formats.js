@@ -16,9 +16,57 @@ export const FORMATS = {
     { id: 'mkv', ext: 'mkv', mime: 'video/x-matroska', label: 'MKV', preview: false, isInput: true, isOutput: true },
     { id: 'webm', ext: 'webm', mime: 'video/webm', label: 'WebM', preview: true, isInput: true, isOutput: true },
     { id: 'avi', ext: 'avi', mime: 'video/x-msvideo', label: 'AVI', preview: false, isInput: true, isOutput: true },
+  ],
+  document: [
+    { id: 'pdf', ext: 'pdf', mime: 'application/pdf', label: 'PDF', preview: true, isInput: true, isOutput: true }
   ]
 };
 
 // Global max file size limit (100 MB)
 export const MAX_FILE_SIZE = 100 * 1024 * 1024;
 export const MAX_FILE_SIZE_LABEL = '100 MB';
+
+/**
+ * Gets format details (ext, category, label) by file extension or name.
+ * Placed here to avoid circular imports.
+ */
+export function getFormatDetails(filenameOrExt) {
+  const ext = filenameOrExt.includes('.') 
+    ? filenameOrExt.split('.').pop().toLowerCase() 
+    : filenameOrExt.toLowerCase();
+  
+  for (const cat of ['image', 'video', 'document']) {
+    const item = FORMATS[cat].find(f => f.ext === ext);
+    if (item) {
+      return { ...item, category: cat };
+    }
+  }
+  return null;
+}
+
+/**
+ * Get list of available output formats based on input extension.
+ * Drives dynamic dropdown content.
+ */
+export function getAvailableOutputs(inputExt) {
+  const info = getFormatDetails(inputExt);
+  if (!info) return [];
+
+  if (info.category === 'image') {
+    // Images convert to other image formats, plus PDF
+    const imageOutputs = FORMATS.image.map(f => f.ext);
+    return [...imageOutputs, 'pdf'].filter(ext => ext !== inputExt);
+  }
+
+  if (info.category === 'video') {
+    // Videos convert to other video formats
+    return FORMATS.video.map(f => f.ext).filter(ext => ext !== inputExt);
+  }
+
+  if (inputExt === 'pdf') {
+    // PDF converts to image formats
+    return FORMATS.image.map(f => f.ext);
+  }
+
+  return [];
+}
