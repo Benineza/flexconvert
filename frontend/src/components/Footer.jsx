@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { RefreshCw, Globe, MessageSquare, Mail, Heart } from 'lucide-react';
+import { Globe, MessageSquare, Mail } from 'lucide-react';
 import './Footer.css';
 
 export default function Footer() {

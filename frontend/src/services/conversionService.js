@@ -1,4 +1,7 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+const rawBaseUrl = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = (rawBaseUrl && rawBaseUrl.trim() !== '')
+  ? rawBaseUrl.trim().replace(/\/+$/, '')
+  : (import.meta.env.DEV ? 'http://localhost:8080' : '');
 
 /**
  * Service to handle real file conversion through the Spring Boot REST API.
@@ -97,7 +100,8 @@ export const conversionService = {
       };
 
       xhr.onerror = () => {
-        reject(new Error(`Network error: Unable to connect to backend server at ${API_BASE_URL}. Please ensure the Spring Boot backend is running.`));
+        const targetDesc = API_BASE_URL ? `at ${API_BASE_URL}` : 'on the server';
+        reject(new Error(`Network error: Unable to connect to backend server ${targetDesc}. Please check your connection and ensure the backend service is running.`));
       };
 
       xhr.ontimeout = () => {

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { FileText, ChevronRight, Sparkles, Layers, ShieldCheck, Zap, ChevronDown } from 'lucide-react';
+import { FileText, ChevronRight, ChevronDown } from 'lucide-react';
 import DropZone from '../components/DropZone';
 import ConversionQueue from '../components/ConversionQueue';
 import PdfSettings from '../components/PdfSettings';
@@ -10,6 +10,11 @@ import './PdfConverterPage.css';
 export default function PdfConverterPage() {
   const [queue, setQueue] = useState([]);
   const [faqOpen, setFaqOpen] = useState({});
+  const queueRef = useRef(queue);
+  
+  useEffect(() => {
+    queueRef.current = queue;
+  }, [queue]);
   
   // Page level compilation settings (for Images to PDF)
   const [pdfCompileSettings, setPdfCompileSettings] = useState({
@@ -20,7 +25,7 @@ export default function PdfConverterPage() {
 
   useEffect(() => {
     return () => {
-      queue.forEach(item => {
+      queueRef.current.forEach(item => {
         if (item.previewUrl) {
           URL.revokeObjectURL(item.previewUrl);
         }

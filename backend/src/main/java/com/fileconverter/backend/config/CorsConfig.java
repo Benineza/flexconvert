@@ -20,9 +20,14 @@ public class CorsConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        List<String> origins = appProperties.getCors().getAllowedOrigins();
-        if (origins != null && !origins.isEmpty()) {
-            config.setAllowedOriginPatterns(origins);
+        List<String> rawOrigins = appProperties.getCors().getAllowedOrigins();
+        if (rawOrigins != null && !rawOrigins.isEmpty()) {
+            List<String> cleanOrigins = rawOrigins.stream()
+                    .flatMap(origin -> java.util.Arrays.stream(origin.split(",")))
+                    .map(String::trim)
+                    .filter(origin -> !origin.isEmpty())
+                    .toList();
+            config.setAllowedOriginPatterns(cleanOrigins);
         } else {
             config.addAllowedOriginPattern("*");
         }

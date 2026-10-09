@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ImageIcon, Film, RefreshCw, ChevronRight, HelpCircle } from 'lucide-react';
+import { ImageIcon, Film, ChevronRight } from 'lucide-react';
 import DropZone from '../components/DropZone';
 import ConversionQueue from '../components/ConversionQueue';
 import { FORMATS } from '../constants/formats';
@@ -8,11 +8,16 @@ import './ConverterPage.css';
 
 export default function ConverterPage({ category }) {
   const [queue, setQueue] = useState([]);
+  const queueRef = useRef(queue);
   
-  // Clear queue when route changes
+  useEffect(() => {
+    queueRef.current = queue;
+  }, [queue]);
+
+  // Clear preview URLs when route changes or component unmounts
   useEffect(() => {
     return () => {
-      queue.forEach(item => {
+      queueRef.current.forEach(item => {
         if (item.previewUrl) {
           URL.revokeObjectURL(item.previewUrl);
         }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Play, Download, Trash2, RefreshCw, Layers, CheckCircle2, AlertCircle } from 'lucide-react';
-import { formatBytes, downloadFile } from '../utils/fileUtils';
+import { Play, Download, Trash2, RefreshCw, Layers, CheckCircle2 } from 'lucide-react';
+import { downloadFile } from '../utils/fileUtils';
 import { conversionService } from '../services/conversionService';
 import FileCard from './FileCard';
 import FormatDropdown from './FormatDropdown';
@@ -14,8 +14,6 @@ export default function ConversionQueue({ queue, onRemove, onUpdateItem, onClear
   const totalCount = queue.length;
   const completedCount = queue.filter(item => item.status === 'completed').isActive || queue.filter(item => item.status === 'completed').length;
   const convertingCount = queue.filter(item => item.status === 'converting').length;
-  const failedCount = queue.filter(item => item.status === 'failed').length;
-  const idleCount = queue.filter(item => item.status === 'idle').length;
 
   const isAllCompleted = totalCount > 0 && completedCount === totalCount;
   const isAnyConverted = queue.some(item => item.status === 'completed' && item.result);

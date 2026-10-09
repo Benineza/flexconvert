@@ -1,0 +1,33 @@
+# Build & Dependencies
+target/
+**/target/
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+!.env.production
+!.env.development
+*.env.local
+
+# IDE & Editor files
+.idea/
+*.iml
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/

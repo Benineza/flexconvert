@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Sparkles, Layers, ShieldCheck, Zap, HelpCircle, ChevronDown, Check } from 'lucide-react';
+import { Sparkles, Layers, ShieldCheck, Zap, ChevronDown } from 'lucide-react';
 import DropZone from '../components/DropZone';
 import ConversionQueue from '../components/ConversionQueue';
 import { FORMATS } from '../constants/formats';

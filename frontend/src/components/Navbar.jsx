@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Sun, Moon, Menu, X, ChevronDown, RefreshCw, Sparkles } from 'lucide-react';
+import { Sun, Moon, Menu, X, ChevronDown, Sparkles } from 'lucide-react';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -26,14 +26,6 @@ export default function Navbar() {
 
   const toggleTheme = () => setDarkMode(!darkMode);
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
-  
-  const handleDropdownToggle = (name) => {
-    if (activeDropdown === name) {
-      setActiveDropdown(null);
-    } else {
-      setActiveDropdown(name);
-    }
-  };
 
   return (
     <header className="navbar-header">

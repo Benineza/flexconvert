@@ -72,7 +72,6 @@ export default function FormatDropdown({ selectedFormat, onSelectFormat, fileCat
     : 'Select output format...';
 
   const groupedList = getFilteredFormats();
-  const totalOptions = groupedList.reduce((acc, g) => acc + g.formats.length, 0);
 
   return (
     <div className="format-dropdown-container" ref={dropdownRef}>

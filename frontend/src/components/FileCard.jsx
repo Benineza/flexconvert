@@ -233,7 +233,7 @@ export default function FileCard({ item, onRemove, onSelectFormat, onDownload, o
           <PdfPreview 
             file={file} 
             totalPages={pdfSettings?.totalPages || 5} 
-            onPageChange={(page) => {
+            onPageChange={() => {
               // Optionally track current view page
             }}
           />
