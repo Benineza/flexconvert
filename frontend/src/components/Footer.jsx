@@ -12,9 +12,7 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="footer-brand-col">
             <Link to="/" className="footer-logo">
-              <div className="logo-icon-wrapper">
-                <RefreshCw className="logo-icon" />
-              </div>
+              <img src="/logo-mark.svg" alt="FlexConvert Logo" className="logo-img-mark" width="34" height="34" />
               <span className="logo-text">FlexConvert</span>
             </Link>
             <p className="footer-description">
@@ -63,10 +61,10 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <div className="footer-copyright">
-            &copy; {currentYear} FlexConvert. All rights reserved. Designed for professional SaaS utilities.
+            &copy; {currentYear} FlexConvert. All rights reserved.
           </div>
           <div className="footer-meta">
-            Made with <Heart size={12} className="heart-icon" /> for the modern web.
+            Powered by NezaWeb.
           </div>
         </div>
       </div>

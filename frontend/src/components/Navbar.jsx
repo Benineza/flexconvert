@@ -40,13 +40,11 @@ export default function Navbar() {
       <div className="navbar-container container">
         {/* Brand Logo */}
         <Link to="/" className="navbar-logo" onClick={() => setMobileMenuOpen(false)}>
-          <div className="logo-icon-wrapper">
-            <RefreshCw className="logo-icon animate-spin-slow" />
-          </div>
+          <img src="/logo-mark.svg" alt="FlexConvert Logo" className="logo-img-mark" width="36" height="36" />
           <span className="logo-text">
             Flex<span className="logo-accent">Convert</span>
           </span>
-          <span className="logo-badge">Beta</span>
+          <span className="logo-badge">Pro</span>
         </Link>
 
         {/* Desktop Menu */}

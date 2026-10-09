@@ -123,20 +123,20 @@ export default function PdfConverterPage() {
 
   const faqs = [
     {
+      q: "Can I convert Word (DOCX), PowerPoint (PPTX), or Text (TXT) files to PDF?",
+      a: "Yes! Upload your DOCX, PPTX, or TXT file to the PDF Converter, select PDF as the output format, and our backend engine will produce a valid PDF with formatted typography and layout."
+    },
+    {
+      q: "Can I convert a PDF into Word (DOCX) or PowerPoint (PPTX)?",
+      a: "Yes! Choose DOCX or PPTX as your output format when uploading a PDF. The backend extracts structure, paragraphs, and slide views into editable documents or presentation slides."
+    },
+    {
       q: "Can I convert multi-page PDF files into separate image pages?",
-      a: "Yes! When converting PDF to PNG/JPG/WebP/AVIF/TIFF, every page can be converted to a separate image. You can download all generated pages sequentially in one click."
+      a: "Yes! When converting PDF to PNG/JPG/WebP/AVIF/TIFF, every page is rendered in high resolution. For multi-page documents, all pages are cleanly packaged into a ZIP archive for one-click download."
     },
     {
       q: "Can I select specific pages of a PDF to convert?",
       a: "Absolutely! After dropping a PDF, select 'Select range' under the PDF settings, then configure your 'From' and 'To' pages. Only that range will be processed."
-    },
-    {
-      q: "How do I reorder images before compiling them into a PDF?",
-      a: "Upload your images, select 'PDF' as the target format, and a layout drawer will expand showing your images list. Use the 'Move Up' and 'Move Down' arrow controls to sequence them."
-    },
-    {
-      q: "Can I choose page size and orientation for compiled PDFs?",
-      a: "Yes, you can customize page sizes (A4, US Letter), layout orientations (Portrait, Landscape), and image fitting behaviors (Fit, Stretch, Original size)."
     }
   ];
 
@@ -160,8 +160,8 @@ export default function PdfConverterPage() {
             <div className="category-icon-header pdf-icon-accent-box">
               <FileText size={24} />
             </div>
-            <h1>Online PDF Converter</h1>
-            <p>Convert PDF files to images and other supported formats, or compile multiple images into a single PDF document.</p>
+            <h1>Universal PDF Converter</h1>
+            <p>Convert PDF files to images, Word (DOCX), PowerPoint (PPTX), and TXT, or convert documents and images into clean PDF files.</p>
 
             <div className="other-converters-nav">
               <span>Looking for other formats?</span>
@@ -176,7 +176,7 @@ export default function PdfConverterPage() {
             {queue.length === 0 ? (
               <DropZone 
                 onFilesAdded={handleAddFiles} 
-                allowedCategory="all" // Allow mixed formats (e.g. PDF input OR image inputs)
+                allowedCategory="pdf" // Allow PDF, DOCX, TXT, PPTX, and image inputs
                 queue={queue}
               />
             ) : (
@@ -216,18 +216,18 @@ export default function PdfConverterPage() {
           <div className="steps-grid">
             <div className="step-card">
               <div className="step-number">01</div>
-              <h3>PDF to Images</h3>
-              <p>Extract all vector pages or a selected range directly to PNG, JPG, or WebP formats.</p>
+              <h3>PDF to Images & Docs</h3>
+              <p>Convert PDF pages to PNG, JPG, WebP, Word DOCX, PowerPoint PPTX, or extract TXT text.</p>
             </div>
             <div className="step-card">
               <div className="step-number">02</div>
-              <h3>Images to PDF</h3>
-              <p>Merge JPG, WebP, SVG, and AVIF pages into a single PDF with portrait/landscape controls.</p>
+              <h3>Documents to PDF</h3>
+              <p>Convert Word DOCX, PowerPoint PPTX, TXT files, and images into clean PDF documents.</p>
             </div>
             <div className="step-card">
               <div className="step-number">03</div>
-              <h3>Page Sequencing</h3>
-              <p>Organize page order visually with reordering arrows prior to creating documents.</p>
+              <h3>Page Customization</h3>
+              <p>Organize page order visually, set page size & orientation, and configure page ranges.</p>
             </div>
           </div>
         </div>

@@ -18,7 +18,10 @@ export const FORMATS = {
     { id: 'avi', ext: 'avi', mime: 'video/x-msvideo', label: 'AVI', preview: false, isInput: true, isOutput: true },
   ],
   document: [
-    { id: 'pdf', ext: 'pdf', mime: 'application/pdf', label: 'PDF', preview: true, isInput: true, isOutput: true }
+    { id: 'pdf', ext: 'pdf', mime: 'application/pdf', label: 'PDF', preview: true, isInput: true, isOutput: true },
+    { id: 'docx', ext: 'docx', mime: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', label: 'DOCX', preview: false, isInput: true, isOutput: true },
+    { id: 'txt', ext: 'txt', mime: 'text/plain', label: 'TXT', preview: true, isInput: true, isOutput: true },
+    { id: 'pptx', ext: 'pptx', mime: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', label: 'PPTX', preview: false, isInput: true, isOutput: true },
   ]
 };
 
@@ -52,9 +55,10 @@ export function getAvailableOutputs(inputExt) {
   const info = getFormatDetails(inputExt);
   if (!info) return [];
 
+  const imageOutputs = FORMATS.image.map(f => f.ext);
+
   if (info.category === 'image') {
     // Images convert to other image formats, plus PDF
-    const imageOutputs = FORMATS.image.map(f => f.ext);
     return [...imageOutputs, 'pdf'].filter(ext => ext !== inputExt);
   }
 
@@ -64,8 +68,13 @@ export function getAvailableOutputs(inputExt) {
   }
 
   if (inputExt === 'pdf') {
-    // PDF converts to image formats
-    return FORMATS.image.map(f => f.ext);
+    // PDF converts to image formats plus document formats (DOCX, PPTX, TXT)
+    return [...imageOutputs, 'docx', 'pptx', 'txt'];
+  }
+
+  if (inputExt === 'docx' || inputExt === 'txt' || inputExt === 'pptx') {
+    // Word, Text, Presentation convert to PDF
+    return ['pdf'];
   }
 
   return [];

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 44" width="210" height="44" fill="none">
+  <defs>
+    <linearGradient id="logoGrad" x1="2" y1="2" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="100" y1="14" x2="190" y2="34" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Logo Mark Emblem -->
+  <g transform="translate(2, 2)">
+    <rect x="0" y="0" width="40" height="40" rx="10" fill="url(#logoGrad)"/>
+    
+    <!-- Back sheet -->
+    <path d="M11 9C11 8.44772 11.4477 8 12 8H20L25 13V25C25 25.5523 24.5523 26 24 26H12C11.4477 26 11 25.5523 11 25V9Z" fill="#FFFFFF" fill-opacity="0.28"/>
+    
+    <!-- Front sheet -->
+    <path d="M15 13C15 12.4477 15.4477 12 16 12H24L29 17V29C29 29.5523 28.5523 30 28 30H16C15.4477 30 15 29.5523 15 29V13Z" fill="#FFFFFF" fill-opacity="0.95"/>
+    <path d="M24 12V17H29L24 12Z" fill="#E2E8F0"/>
+    
+    <!-- Lines on front sheet -->
+    <rect x="18" y="19" width="7" height="1.8" rx="0.9" fill="#6366F1"/>
+    <rect x="18" y="22.5" width="5.5" height="1.8" rx="0.9" fill="#94A3B8"/>
+    <rect x="18" y="26" width="4" height="1.8" rx="0.9" fill="#CBD5E1"/>
+
+    <!-- Transformation loop arrows -->
+    <path d="M8 17C7.5 13 11 9 15 8" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M13 6.5L16 8.5L12.8 10.5" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <path d="M32 23C32.5 27 29 31 25 32" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M27 33.5L24 31.5L27.2 29.5" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Typography: Flex (Current Text) + Convert (Gradient) -->
+  <text x="52" y="29" font-family="Plus Jakarta Sans, system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" letter-spacing="-0.03em" fill="currentColor">Flex<tspan fill="url(#textGrad)">Convert</tspan></text>
+</svg>

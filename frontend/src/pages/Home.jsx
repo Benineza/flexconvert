@@ -88,7 +88,7 @@ export default function Home() {
     },
     {
       q: "Are my files stored on your servers?",
-      a: "For this frontend-only release, all file processing happens directly inside your web browser. No files are uploaded to any server. When the Spring Boot backend is active, files are transcoded on-the-fly and immediately deleted post-download."
+      a: "No! Files are processed on-the-fly in safe temporary storage and immediately cleaned up after conversion. We never permanently store or view your files."
     },
     {
       q: "Does this require complex software installation?",
@@ -107,7 +107,7 @@ export default function Home() {
             </div>
             <h1>Convert Any File. <br />Simply.</h1>
             <p className="hero-subtext">
-              Fast, secure, and modern online converter. Change formats for images, videos, and media files directly in your browser.
+              Fast, secure, and modern online converter. Change formats for images, videos, Word, and PDF documents with real end-to-end processing.
             </p>
           </div>
 

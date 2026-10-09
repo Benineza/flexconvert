@@ -8,7 +8,7 @@ export default function DropZone({ onFilesAdded, allowedCategory = 'all', queue 
   const [errorMsg, setErrorMsg] = useState(null);
   const fileInputRef = useRef(null);
 
-  // Filter format details based on category (image, video, or all)
+  // Filter format details based on category (image, video, document, or all)
   const getSubText = () => {
     if (allowedCategory === 'image') {
       return 'Supports PNG, JPG, JPEG, WebP, AVIF, TIFF, SVG, ICO, GIF';
@@ -16,7 +16,10 @@ export default function DropZone({ onFilesAdded, allowedCategory = 'all', queue 
     if (allowedCategory === 'video') {
       return 'Supports MP4, MOV, MKV, WebM, AVI';
     }
-    return 'Supports PNG, JPG, WebP, AVIF, SVG, GIF, MP4, MOV, WebM, MKV, etc.';
+    if (allowedCategory === 'document' || allowedCategory === 'pdf') {
+      return 'Supports PDF, Word (DOCX), Text (TXT), PowerPoint (PPTX), and Images';
+    }
+    return 'Supports PDF, Word (DOCX), TXT, PPTX, Images (PNG, JPG, WebP...), and Videos (MP4, MOV...)';
   };
 
   const processFiles = (filesList) => {
@@ -42,6 +45,12 @@ export default function DropZone({ onFilesAdded, allowedCategory = 'all', queue 
         if (allowedCategory === 'video' && !isVideo && !file.name.match(/\.(mp4|mov|mkv|webm|avi)$/i)) {
           errorCount++;
           lastError = `"${file.name}" is not a video file.`;
+          continue;
+        }
+        if ((allowedCategory === 'document' || allowedCategory === 'pdf') && 
+            !file.name.match(/\.(pdf|docx|txt|pptx|png|jpg|jpeg|webp|avif|tiff|svg|ico|gif)$/i)) {
+          errorCount++;
+          lastError = `"${file.name}" is not a supported document or image format.`;
           continue;
         }
       }
@@ -130,7 +139,9 @@ export default function DropZone({ onFilesAdded, allowedCategory = 'all', queue 
               ? 'image/*' 
               : allowedCategory === 'video' 
                 ? 'video/*' 
-                : 'image/*,video/*'
+                : allowedCategory === 'document' || allowedCategory === 'pdf'
+                  ? '.pdf,.docx,.txt,.pptx,image/*'
+                  : 'image/*,video/*,.pdf,.docx,.txt,.pptx'
           }
         />
         

@@ -108,6 +108,83 @@
   text-transform: uppercase;
 }
 
+/* Word DOCX branding */
+.docx-thumbnail-icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: rgba(37, 99, 235, 0.1) !important;
+  color: #2563eb !important;
+}
+
+.docx-brand-icon {
+  color: #2563eb;
+  filter: drop-shadow(0 2px 6px rgba(37, 99, 235, 0.15));
+}
+
+.docx-badge-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #2563eb;
+  background-color: rgba(37, 99, 235, 0.15);
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+/* PowerPoint PPTX branding */
+.pptx-thumbnail-icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: rgba(234, 88, 12, 0.1) !important;
+  color: #ea580c !important;
+}
+
+.pptx-brand-icon {
+  color: #ea580c;
+  filter: drop-shadow(0 2px 6px rgba(234, 88, 12, 0.15));
+}
+
+.pptx-badge-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #ea580c;
+  background-color: rgba(234, 88, 12, 0.15);
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+/* Plain TXT branding */
+.txt-thumbnail-icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: rgba(71, 85, 105, 0.1) !important;
+  color: #475569 !important;
+}
+
+.txt-brand-icon {
+  color: #475569;
+}
+
+.txt-badge-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #475569;
+  background-color: rgba(71, 85, 105, 0.15);
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
 /* Card details body */
 .file-card-details {
   display: flex;

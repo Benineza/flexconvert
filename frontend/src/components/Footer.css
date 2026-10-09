@@ -29,6 +29,11 @@
   color: var(--text-primary);
 }
 
+.logo-img-mark {
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+}
+
 .footer-description {
   font-size: 0.9rem;
   color: var(--text-secondary);

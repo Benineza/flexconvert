@@ -33,6 +33,33 @@ export default function FileCard({ item, onRemove, onSelectFormat, onDownload, o
       );
     }
 
+    if (fileExt === 'docx') {
+      return (
+        <div className="file-card-preview-fallback docx-thumbnail-icon-box">
+          <FileText size={40} className="docx-brand-icon" />
+          <span className="docx-badge-label">DOCX</span>
+        </div>
+      );
+    }
+
+    if (fileExt === 'pptx') {
+      return (
+        <div className="file-card-preview-fallback pptx-thumbnail-icon-box">
+          <FileText size={40} className="pptx-brand-icon" />
+          <span className="pptx-badge-label">PPTX</span>
+        </div>
+      );
+    }
+
+    if (fileExt === 'txt') {
+      return (
+        <div className="file-card-preview-fallback txt-thumbnail-icon-box">
+          <FileText size={40} className="txt-brand-icon" />
+          <span className="txt-badge-label">TXT</span>
+        </div>
+      );
+    }
+
     if (!previewUrl) {
       return (
         <div className="file-card-preview-fallback">

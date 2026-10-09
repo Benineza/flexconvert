@@ -32,6 +32,12 @@ html.dark .navbar-header {
   color: var(--text-primary);
 }
 
+.logo-img-mark {
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(99, 102, 241, 0.25));
+}
+
 .logo-icon-wrapper {
   display: flex;
   align-items: center;
